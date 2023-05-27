@@ -8,34 +8,22 @@ pipeline{
             steps{
                 sh "mvn test"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
+            
         }
         stage("build"){
             steps{
+                sh 'mvn install'
+            }
+            
+        }
+        stage("deploy on test"){
+            steps{
                 echo 'build'
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
+            
         }
+        
+        
     }
     post{
         always{
