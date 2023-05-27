@@ -18,7 +18,7 @@ pipeline{
         }
         stage("deploy on test"){
             steps{
-                echo 'build'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatdetails1', path: '', url: 'http://192.168.1.39:80')], contextPath: '/app', war: '**/*.war'
             }
             
         }
